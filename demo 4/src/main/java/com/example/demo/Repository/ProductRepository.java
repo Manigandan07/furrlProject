@@ -11,6 +11,6 @@ import java.util.Set;
 public interface ProductRepository {
 
 
-    @Query(value = "select * from product where id in (select productId from product_theme_mapping where themeId in (:themeIds)) order by price desc,createdTimeStamp desc  limit :page,20)", nativeQuery = true)
+    @Query(value = "select * from product where id in (select productId from product_theme_mapping where themeId in (:themeIds)) order by price asc,createdTimeStamp desc  limit :page,20)", nativeQuery = true)
     List<Product> getListOfProductForHomePage(Set<Long> themeIds, int page);
 }
